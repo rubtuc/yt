@@ -28,6 +28,33 @@
         </div>
         </div>
       </div>
+
+    <van-tabbar v-model="active" active-color="#87c67d" inactive-color="#aaaaaa">
+      <van-tabbar-item  replace to="/home">
+        <span>行程</span>
+        <template #icon="props">
+          <img :src="props.active ? icon.active : icon.inactive" />
+        </template>
+      </van-tabbar-item>
+      <van-tabbar-item>
+        <span>扫码</span>
+        <template #icon="props">
+          <img :src="props.active ? icon.active : icon.inactive" />
+        </template>
+      </van-tabbar-item>
+      <van-tabbar-item>
+        <span>碳形象</span>
+        <template #icon="props">
+          <img :src="props.active ? icon.active : icon.inactive" />
+        </template>
+      </van-tabbar-item>
+      <van-tabbar-item>
+        <span>我的</span>
+        <template #icon="icon3">
+          <img :src="icon3.active ? icon3.active : icon3.inactive" />
+        </template>
+      </van-tabbar-item>
+    </van-tabbar>
       <div class="nav">
         <div>
           <img src="../../images/cat.jpg" class="icon">
@@ -58,6 +85,23 @@ export default {
   name: 'Home',
   data() {
     return {
+      active:0,
+      icon: {
+        active: 'https://img.yzcdn.cn/vant/user-active.png',
+        inactive: 'https://img.yzcdn.cn/vant/user-inactive.png',
+      },
+      icon1: {
+        active: 'https://img.yzcdn.cn/vant/user-active.png',
+        inactive: 'https://img.yzcdn.cn/vant/user-inactive.png',
+      },
+      icon2: {
+        active: 'https://img.yzcdn.cn/vant/user-active.png',
+        inactive: 'https://img.yzcdn.cn/vant/user-inactive.png',
+      },
+      icon3: {
+        active: '../../images/cat.jpg',
+        inactive: 'https://img.yzcdn.cn/vant/user-inactive.png',
+      },
       rankList: [
         {id: 0, username: 'hmm', score: 355, img: require('../../images/cat.jpg')},
         {id: 1, username: 'hmm', score: 355, img: require('../../images/cat.jpg')},
