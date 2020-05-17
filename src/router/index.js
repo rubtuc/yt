@@ -30,6 +30,21 @@ Vue.use(VueRouter)
       name: 'Scan',
       component: () => import(/* webpackChunkName: "about" */ '../views/Scan.vue')
     },
+    {
+      path: '/notice',
+      name: 'Notice',
+      component: () => import(/* webpackChunkName: "about" */ '../views/Notice.vue')
+    },
+    {
+      path: '/pay',
+      name: 'Pay',
+      component: () => import(/* webpackChunkName: "about" */ '../views/Pay.vue')
+    },
+    {
+      path: '/map',
+      name: 'Map',
+      component: () => import(/* webpackChunkName: "about" */ '../views/Map/Map.vue')
+    },
   {
     path: '/about',
     name: 'About',

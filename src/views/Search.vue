@@ -14,12 +14,18 @@
         />
       </form>
       <p class="search-title">猜你关心</p>
-      <div class="center-cell" style="margin-top: 70px">
-        <div class="second-cell" style="height: auto;padding-top: 0;padding-bottom: 0">
+      <div class="center-cell">
+        <div class="second-cell search-cell">
           <div class="info-cell">
-            <p class="my-info">个人信息</p>
+            <p class="my-info">使用方法</p>
           </div>
-
+          <div class="info-cell">
+            <p class="my-info">积分规则</p>
+          </div>
+          <div class="info-cell">
+            <p class="my-info">更换手机号</p>
+          </div>
+          <p class="more">查看更多</p>
         </div>
       </div>
     </div>
@@ -45,6 +51,27 @@
 </script>
 
 <style scoped>
+  .search-cell{
+    height: auto;padding-top: 0;padding-bottom: 0;position: relative;
+  }
+  .more{
+    font-size: 11px;
+    color: #1b72e1;
+    bottom: 11px;
+    text-align: center;
+  }
+  .center-cell{
+    display: flex;
+    justify-content: center;
+  }
+  .info-cell{
+    display: flex;
+    align-items: center;
+    margin: 0;
+    border-bottom: 1px solid  #aaaaaa59;
+    font-size: 13px;
+    color: #000000;
+  }
   .search-title{
     font-size: 17px;
     margin: 16px 0 16px 30px;
