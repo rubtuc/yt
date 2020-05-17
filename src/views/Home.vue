@@ -28,80 +28,68 @@
         </div>
         </div>
       </div>
+      <TabBar></TabBar>
+<!--    <van-tabbar v-model="active" active-color="#87c67d" inactive-color="#aaaaaa">-->
+<!--      <van-tabbar-item  replace to="/home">-->
+<!--        <span>行程</span>-->
+<!--        <template #icon="props">-->
+<!--          <img :src="props.active ? icon.active : icon.inactive" />-->
+<!--        </template>-->
+<!--      </van-tabbar-item>-->
+<!--      <van-tabbar-item>-->
+<!--        <span>扫码</span>-->
+<!--        <template #icon="props">-->
+<!--          <img :src="props.active ? icon.active : icon.inactive" />-->
+<!--        </template>-->
+<!--      </van-tabbar-item>-->
+<!--      <van-tabbar-item>-->
+<!--        <span>碳形象</span>-->
+<!--        <template #icon="props">-->
+<!--          <img :src="props.active ? icon.active : icon.inactive" />-->
+<!--        </template>-->
+<!--      </van-tabbar-item>-->
+<!--      <van-tabbar-item>-->
+<!--        <span>我的</span>-->
+<!--        <template #icon="icon3">-->
+<!--          <img :src="icon3.active ? icon3.active : icon3.inactive" />-->
+<!--        </template>-->
+<!--      </van-tabbar-item>-->
+<!--    </van-tabbar>-->
+<!--      <div class="nav">-->
+<!--        <div>-->
+<!--          <img src="../../images/cat.jpg" class="icon">-->
+<!--          <p class="icon-text">出行</p>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--          <img src="../../images/cat.jpg" class="icon">-->
+<!--          <p class="icon-text">乘车码</p>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--          <img src="../../images/cat.jpg" class="icon">-->
+<!--          <p class="icon-text">碳形象</p>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--          <img src="../../images/cat.jpg" class="icon">-->
+<!--          <p class="icon-text">我的</p>-->
+<!--        </div>-->
 
-    <van-tabbar v-model="active" active-color="#87c67d" inactive-color="#aaaaaa">
-      <van-tabbar-item  replace to="/home">
-        <span>行程</span>
-        <template #icon="props">
-          <img :src="props.active ? icon.active : icon.inactive" />
-        </template>
-      </van-tabbar-item>
-      <van-tabbar-item>
-        <span>扫码</span>
-        <template #icon="props">
-          <img :src="props.active ? icon.active : icon.inactive" />
-        </template>
-      </van-tabbar-item>
-      <van-tabbar-item>
-        <span>碳形象</span>
-        <template #icon="props">
-          <img :src="props.active ? icon.active : icon.inactive" />
-        </template>
-      </van-tabbar-item>
-      <van-tabbar-item>
-        <span>我的</span>
-        <template #icon="icon3">
-          <img :src="icon3.active ? icon3.active : icon3.inactive" />
-        </template>
-      </van-tabbar-item>
-    </van-tabbar>
-      <div class="nav">
-        <div>
-          <img src="../../images/cat.jpg" class="icon">
-          <p class="icon-text">出行</p>
-        </div>
-        <div>
-          <img src="../../images/cat.jpg" class="icon">
-          <p class="icon-text">乘车码</p>
-        </div>
-        <div>
-          <img src="../../images/cat.jpg" class="icon">
-          <p class="icon-text">碳形象</p>
-        </div>
-        <div>
-          <img src="../../images/cat.jpg" class="icon">
-          <p class="icon-text">我的</p>
-        </div>
-
-      </div>
+<!--      </div>-->
 
     </div>
 
 </template>
 
 <script>
+import TabBar from '../components/TabBar'
+
 // @ is an alias to /src
 export default {
   name: 'Home',
+  components:{
+    TabBar
+  },
   data() {
     return {
-      active:0,
-      icon: {
-        active: 'https://img.yzcdn.cn/vant/user-active.png',
-        inactive: 'https://img.yzcdn.cn/vant/user-inactive.png',
-      },
-      icon1: {
-        active: 'https://img.yzcdn.cn/vant/user-active.png',
-        inactive: 'https://img.yzcdn.cn/vant/user-inactive.png',
-      },
-      icon2: {
-        active: 'https://img.yzcdn.cn/vant/user-active.png',
-        inactive: 'https://img.yzcdn.cn/vant/user-inactive.png',
-      },
-      icon3: {
-        active: '../../images/cat.jpg',
-        inactive: 'https://img.yzcdn.cn/vant/user-inactive.png',
-      },
       rankList: [
         {id: 0, username: 'hmm', score: 355, img: require('../../images/cat.jpg')},
         {id: 1, username: 'hmm', score: 355, img: require('../../images/cat.jpg')},
@@ -143,13 +131,11 @@ export default {
   }
   .second-cell{
     width: 92%;
-    height: 168px;
-    padding: 0 11px 0 11px;
+    padding: 20px 11px 20px 11px;
     background-color: #ffffff;
     box-shadow: inset 0px -2px 5px 0px
-    rgba(0, 0, 0, 0.35);
+    rgba(0, 0, 0, 0.14);
     border-radius: 3px;
-    opacity: 0.73;
     justify-content: center;
     text-align: left;
   }

@@ -15,6 +15,21 @@ Vue.use(VueRouter)
       name: 'Shop',
       component: () => import(/* webpackChunkName: "about" */ '../views/Shop.vue')
     },
+    {
+      path: '/person',
+      name: 'Person',
+      component: () => import(/* webpackChunkName: "about" */ '../views/Person.vue')
+    },
+    {
+      path: '/search',
+      name: 'Search',
+      component: () => import(/* webpackChunkName: "about" */ '../views/Search.vue')
+    },
+    {
+      path: '/scan',
+      name: 'Scan',
+      component: () => import(/* webpackChunkName: "about" */ '../views/Scan.vue')
+    },
   {
     path: '/about',
     name: 'About',
