@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
   </head>
   <body>
     <noscript>
@@ -14,4 +15,60 @@
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>
+  <script src="//cdn.bootcss.com/EaselJS/0.8.0/easeljs.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=571c8b692c62886e68606a54dfd60c68&plugin=AMap.CitySearch&plugin=AMap.Autocomplete,AMap.PlaceSearch"></script>
+  <script type="text/javascript">
+      var map = new AMap.Map("container", {
+          resizeEnable: true,
+          zoom: 13
+      });
+      //获取用户所在城市信息
+      function showCityInfo() {
+          //实例化城市查询类
+          var citysearch = new AMap.CitySearch();
+          //自动获取用户IP，返回当前城市
+          citysearch.getLocalCity(function(status, result) {
+              if (status === 'complete' && result.info === 'OK') {
+                  if (result && result.city && result.bounds) {
+                      var cityinfo = result.city;
+                      var citybounds = result.bounds;
+                      document.getElementById('info').innerHTML = '您当前所在城市：'+cityinfo;
+                      //地图显示当前城市
+                      map.setBounds(citybounds);
+                  }
+              } else {
+                  document.getElementById('info').innerHTML = result.info;
+              }
+          });
+      }
+      showCityInfo();
+      //输入提示
+      var autoOptions = {
+          input: "tipinput"
+      };
+      var auto = new AMap.Autocomplete(autoOptions);
+      var placeSearch = new AMap.PlaceSearch({
+          map: map
+      });  //构造地点查询类
+      AMap.event.addListener(auto, "select", select);//注册监听，当选中某条记录时会触发
+      function select(e) {
+          placeSearch.setCity(e.poi.adcode);
+          placeSearch.search(e.poi.name);  //关键字查询查询
+      }
+
+      var autoOptions = {
+          input: "tipinput1"
+      };
+      var auto = new AMap.Autocomplete(autoOptions);
+      var placeSearch = new AMap.PlaceSearch({
+          map: map
+      });  //构造地点查询类
+      AMap.event.addListener(auto, "select", select);//注册监听，当选中某条记录时会触发
+      function select(e) {
+          placeSearch.setCity(e.poi.adcode);
+          placeSearch.search(e.poi.name);  //关键字查询查询
+      }
+  </script>
+
+
 </html>

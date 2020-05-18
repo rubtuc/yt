@@ -1,8 +1,28 @@
 <template>
   <div class="home">
+      <div class="top-cell" onload="init()">
+        <canvas id="demoCanvas" width="50px" height="50px"></canvas>
+<!--        <div style="z-index: -1;">-->
+<!--          <div class="detail">积分明细</div>-->
+<!--          <div class="circle">-->
+<!--            {{score}}-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <p class="tip">减碳行动有些携懈怠了哦</p>-->
 
-<!--    <HelloWorld msg="Welcome to Your Vue.js App"/>-->
-      <div class="top-cell"></div>
+<!--        <easel-canvas width="400" height="300">-->
+<!--          <easel-shape-->
+<!--            :x="200"-->
+<!--            :y="150"-->
+<!--            form="circle"-->
+<!--            fill="blue"-->
+<!--            :dimensions="20"-->
+<!--            :align="['center','center']"-->
+<!--          >-->
+<!--          </easel-shape>-->
+<!--        </easel-canvas>-->
+      </div>
+
       <div style="display: flex;justify-content: center">
         <div class="second-cell">
           <p class="title">积分权限</p>
@@ -29,58 +49,40 @@
         </div>
       </div>
       <TabBar></TabBar>
-<!--    <van-tabbar v-model="active" active-color="#87c67d" inactive-color="#aaaaaa">-->
-<!--      <van-tabbar-item  replace to="/home">-->
-<!--        <span>行程</span>-->
-<!--        <template #icon="props">-->
-<!--          <img :src="props.active ? icon.active : icon.inactive" />-->
-<!--        </template>-->
-<!--      </van-tabbar-item>-->
-<!--      <van-tabbar-item>-->
-<!--        <span>扫码</span>-->
-<!--        <template #icon="props">-->
-<!--          <img :src="props.active ? icon.active : icon.inactive" />-->
-<!--        </template>-->
-<!--      </van-tabbar-item>-->
-<!--      <van-tabbar-item>-->
-<!--        <span>碳形象</span>-->
-<!--        <template #icon="props">-->
-<!--          <img :src="props.active ? icon.active : icon.inactive" />-->
-<!--        </template>-->
-<!--      </van-tabbar-item>-->
-<!--      <van-tabbar-item>-->
-<!--        <span>我的</span>-->
-<!--        <template #icon="icon3">-->
-<!--          <img :src="icon3.active ? icon3.active : icon3.inactive" />-->
-<!--        </template>-->
-<!--      </van-tabbar-item>-->
-<!--    </van-tabbar>-->
-<!--      <div class="nav">-->
-<!--        <div>-->
-<!--          <img src="../../images/cat.jpg" class="icon">-->
-<!--          <p class="icon-text">出行</p>-->
-<!--        </div>-->
-<!--        <div>-->
-<!--          <img src="../../images/cat.jpg" class="icon">-->
-<!--          <p class="icon-text">乘车码</p>-->
-<!--        </div>-->
-<!--        <div>-->
-<!--          <img src="../../images/cat.jpg" class="icon">-->
-<!--          <p class="icon-text">碳形象</p>-->
-<!--        </div>-->
-<!--        <div>-->
-<!--          <img src="../../images/cat.jpg" class="icon">-->
-<!--          <p class="icon-text">我的</p>-->
-<!--        </div>-->
-
-<!--      </div>-->
-
     </div>
 
 </template>
 
 <script>
 import TabBar from '../components/TabBar'
+function init() {
+  //遮罩
+  // var stage = new createjs.Stage("box");
+  // var image=new Image();
+  // image.src="../../images/cat.jpg";
+  // image.onload=handleImageLoad;
+  // function handleImageLoad(e){
+  //   var b=new createjs.Bitmap(e.target);
+  //   stage.addChild(b);
+  //   var Mask=new createjs.Shape();
+  //   Mask.graphics.beginFill("red");
+  //   Mask.graphics.drawCircle(0,0,60);
+  //   Mask.x=100;
+  //   Mask.y=100;
+  //   b.mask=Mask;
+  //   stage.update();
+  // }
+
+  // 这里写代码
+  var stage = new createjs.Stage("demoCanvas");
+  var circle = new createjs.Shape();
+  circle.graphics.beginFill("DeepSkyBlue").drawCircle(0, 0, 50);
+  circle.x = 100;
+  circle.y = 100;
+  stage.addChild(circle);
+  stage.update();
+
+}
 
 // @ is an alias to /src
 export default {
@@ -88,8 +90,12 @@ export default {
   components:{
     TabBar
   },
+  mounted(){
+    init()
+  },
   data() {
     return {
+      score: 88,
       rankList: [
         {id: 0, username: 'hmm', score: 355, img: require('../../images/cat.jpg')},
         {id: 1, username: 'hmm', score: 355, img: require('../../images/cat.jpg')},
@@ -102,6 +108,47 @@ export default {
 }
 </script>
 <style>
+  #demoCanvas{
+    z-index: 1;
+
+  }
+  .tip{
+    bottom: 12px;
+    font-size: 13px;
+    color: #87c67d;
+    text-align: center;
+    line-height: 500px;
+  }
+  .detail{
+    position:absolute;
+    top:15px;
+    right:15px;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    line-height: 24px;
+    letter-spacing: 0px;
+    color: #87c67d;
+  }
+
+  .circle{
+    width: 126px;
+    height: 126px;
+    background-color: #ffffff;
+    box-shadow: inset 0px 0px 13px 1px
+    rgba(38, 148, 0, 0.32);
+    border-radius: 50%;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(100%, 150%);
+    font-size: 46px;
+    font-weight: bold;
+    color: #04bd04;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .icon{
     width: 22px;
     height: 21px;
@@ -125,9 +172,10 @@ export default {
     bottom: 0;
   }
   .top-cell{
-    height: 197px;
+    height: 440px;
     width: 100%;
     background-color: ivory;
+    position: relative;
   }
   .second-cell{
     width: 92%;

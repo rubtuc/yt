@@ -5,18 +5,21 @@
       <p class="nav-center">易碳</p>
       <p class="nav-side" style="text-align: right;margin-right: 13px">签到</p>
     </div>
-    <div class="map">
+    <div></div>
+    <div class="map" id="container">
       <div class="map-cell">
         <div>
           <div class="search-route">
             <div class="flex-row" >
               <div class="start-point"></div>
-              <input class="input" placeholder="我的位置" style="border-bottom: 2px solid #959595">
+              <input class="input" placeholder="我的位置" id="tipinput" style="border-bottom: 2px solid #95959545">
             </div>
             <div class="flex-row">
               <div class="end-point"></div>
-              <input class="input" placeholder="目的地" style="border-bottom: 2px solid #959595">
+              <input class="input" placeholder="目的地" id="tipinput1" style="border-bottom: 2px solid #95959545;position: relative">
+              <van-button type="primary" class="search" size="small">搜索</van-button>
               <img src="../../../images/cat.jpg" class="reverse-icon">
+
             </div>
           </div>
           <div class="btn-seek flex-row">
@@ -39,6 +42,7 @@
 </template>
 
 <script>
+
 import TabBar from '../../components/TabBar'
     export default {
         name: "Map",
@@ -53,7 +57,32 @@ import TabBar from '../../components/TabBar'
     }
 </script>
 
+<style lang="less" scoped>
+  #container {
+    width: 100%;
+    height: 28.7vh;
+    /deep/.anchorBL{
+      display:none;
+    }
+    /deep/.BMap_cpyCtrl
+    {
+      display:none;
+    }
+  }
+</style>
 <style scoped>
+  #container {
+    background-color: #42b983;
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+  }
+  .search{
+    z-index: 1;
+    position: absolute;
+    right: 75px;
+  }
   .seek-icon{
     width: 24px;
     height: 24px;
@@ -75,7 +104,8 @@ import TabBar from '../../components/TabBar'
   .input{
     width: 249px;
     margin: 22px 0 9px 13px;
-    border:none;outline:medium
+    border:none;
+    outline:medium
   }
   .start-point{
     width: 8px;
@@ -107,6 +137,7 @@ p{
   margin: 0;
 }
   .map-cell{
+    z-index: 1;
     padding: 0 19px 0 19px ;
     background-color: #ffffff;
     box-shadow: inset 0px 1px 5px 0px

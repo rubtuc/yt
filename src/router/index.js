@@ -45,6 +45,11 @@ Vue.use(VueRouter)
       name: 'Map',
       component: () => import(/* webpackChunkName: "about" */ '../views/Map/Map.vue')
     },
+    {
+      path: '/station',
+      name: 'Station',
+      component: () => import(/* webpackChunkName: "about" */ '../views/Map/Station.vue')
+    },
   {
     path: '/about',
     name: 'About',
