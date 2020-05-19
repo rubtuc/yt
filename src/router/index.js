@@ -46,9 +46,24 @@ Vue.use(VueRouter)
       component: () => import(/* webpackChunkName: "about" */ '../views/Map/Map.vue')
     },
     {
+      path: '/map/second',
+      name: 'MapSecond',
+      component: () => import(/* webpackChunkName: "about" */ '../views/Map/MapSecond.vue')
+    },
+    {
+      path: '/map/third',
+      name: 'MapThird',
+      component: () => import(/* webpackChunkName: "about" */ '../views/Map/MapThird.vue')
+    },
+    {
       path: '/station',
       name: 'Station',
       component: () => import(/* webpackChunkName: "about" */ '../views/Map/Station.vue')
+    },
+    {
+      path: '/record',
+      name: 'Record',
+      component: () => import(/* webpackChunkName: "about" */ '../views/Record.vue')
     },
   {
     path: '/about',

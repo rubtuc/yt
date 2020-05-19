@@ -1,7 +1,7 @@
 <template>
-  <div style="background-color: ivory;height: 100vh">
+  <div style="height: 100vh">
     <div class="top-bg">
-      <img src="../../images/cat.jpg" class="my-icon" style="margin: 17px 15px 15px 0;" >
+      <img src="../../images/通知.png" class="my-icon" style="margin: 17px 15px 15px 0;" >
       <div class="center-cell">
         <div class="second-cell my">
           <div class="my-cell">
@@ -12,7 +12,7 @@
             </div>
           </div>
           <div class="score-cell" style="display: flex;align-items: center;justify-content: flex-end;margin-top: 12px">
-            <img src="../../images/cat.jpg" class="my-icon" style="margin-right: 0">
+            <img src="../../images/积分.png" class="my-icon" style="margin-right: 0">
             <p style="margin: 0 39px 0 7px">{{score}}</p>
           </div>
         </div>
@@ -21,23 +21,23 @@
     <div class="center-cell" style="margin-top: 70px">
       <div class="second-cell" style="height: auto;padding-top: 0;padding-bottom: 0">
         <div class="info-cell">
-          <img src="../../images/cat.jpg" class="my-icon">
+          <img src="../../images/信息.png" class="my-icon">
           <p class="my-info">个人信息</p>
         </div>
         <div class="info-cell">
-          <img src="../../images/cat.jpg" class="my-icon">
+          <img src="../../images/钱包.png" class="my-icon">
           <p class="my-info">钱包</p>
         </div>
         <div class="info-cell">
-          <img src="../../images/cat.jpg" class="my-icon">
+          <img src="../../images/订单管理.png" class="my-icon">
           <p class="my-info">订单</p>
         </div>
         <div class="info-cell">
-          <img src="../../images/cat.jpg" class="my-icon">
+          <img src="../../images/帮助.png" class="my-icon">
           <p class="my-info">帮助</p>
         </div>
         <div class="info-cell">
-          <img src="../../images/cat.jpg" class="my-icon">
+          <img src="../../images/aj_设置.png" class="my-icon">
           <p class="my-info">设置</p>
         </div>
       </div>

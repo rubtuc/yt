@@ -4,7 +4,7 @@
         <p class="back">返回</p>
         <p class="shop-icon">支付明细</p>
       </div>
-      <img src="../../images/cat.jpg" class="pay-img">
+      <img src="../../images/成功.png" class="pay-img">
       <p class="t1">支付成功</p>
       <p class="t2">地铁出行</p>
       <div>   <span style="font-size: 24px">￥</span><span class="t3">{{price}}</span></div>
@@ -24,11 +24,23 @@
     }
 </script>
 
-<style scoped>
-  .pay-img{
-    width: 80px;
-    height: 81px;
+<style scoped lang="less">
+  /deep/.van-button--primary{
+    width: 103px;
+    height: 35px;
     background-color: #87c67d;
+    border-radius: 3px;
+    font-size: 13px;
+    font-weight: normal;
+    font-stretch: normal;
+    line-height: 24px;
+    letter-spacing: 0px;
+    color: #000000;
+    border: 1px solid #ffffff;
+  }
+  .pay-img{
+    width: 81px;
+    height: 81px;
     border-radius: 50%;
     margin: 63px 0 22px 0;
   }
@@ -46,6 +58,7 @@
   .t3{
     font-size: 28px;
     color: #000000;
+    font-weight: bold;
     text-align: center;
   }
   .shop-icon{

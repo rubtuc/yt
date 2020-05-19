@@ -1,7 +1,7 @@
 <template>
 <div>
   <div class="shop-nav">
-    <p class="nav-side" style="text-align: left">返回</p>
+    <p class="nav-side" style="text-align: left" @click="backToMap">返回</p>
     <form action="/">
       <van-search
         v-model="value"
@@ -54,6 +54,9 @@
         onCancel() {
           Toast('取消');
         },
+        backToMap(){
+          this.$router.push('/map')
+        }
       },
     }
 </script>

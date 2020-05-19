@@ -2,13 +2,14 @@
   <div>
     <div class="shop-nav">
       <p class="back">返回</p>
-      <img src="../../images/cat.jpg" class="shop-icon">
+      <img src="../../images/购物车.png" class="shop-icon">
     </div>
     <div class="shop-header">
       <p class="shop-header-text1">我的碳积分</p>
       <p class="shop-header-text2">{{score}}</p>
     </div>
       <van-tabs v-model="active" title-active-color="#87c67d" title-inactive-color="#aaaaaa" color="#87c67d">
+        <img src="../../images/timg.jpg" class="shop-banner">
         <van-tab title="全部" class="good-cell">
           <div v-for="item in shopList" :key="item.id">
             <img src="../../images/cat.jpg" class="good-img">
@@ -70,6 +71,11 @@
 </script>
 
 <style scoped>
+  .shop-banner{
+    width: 375px;
+    height: 144px;
+    margin-top: 10px;
+  }
   .good-cell{
     padding: 10px;
     display: flex;

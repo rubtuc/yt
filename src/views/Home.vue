@@ -160,12 +160,10 @@ export default {
   }
   .nav{
     width: 100%;
-    height: 48px;
-    padding: 9px 0 0 0 ;
     background-color: #ffffff;
     box-shadow: inset 0px -1px 1px 0px
     rgba(36, 19, 16, 0.14);
-    border: solid 1px rgba(135, 135, 135, 0.14);
+
     display: flex;
     justify-content: space-around;
     position: fixed;

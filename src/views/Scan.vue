@@ -1,10 +1,10 @@
 <template>
-<div style="background-color: #87c67d;height: 100vh;text-align: center; ">
-  <img class="scan-banner" src="../../images/cat.jpg">
+<div style="background-image: linear-gradient(#ffffff, #87c67d);height: 100vh;text-align: center; ">
+  <img class="scan-banner" src="../../images/20170602170035_1250.jpg">
   <div class="scan-code">
-    <img src="../../images/cat.jpg" class="code-img" >
+    <img src="../../images/二维码出行.png" class="code-img" >
     <div style="display: flex;align-items: center;justify-content: center">
-      <img src="../../images/cat.jpg" class="refresh-icon">
+      <img src="../../images/刷新.png" class="refresh-icon">
       <p>刷新</p>
     </div>
   </div>
