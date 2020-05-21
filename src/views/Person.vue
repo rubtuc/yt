@@ -81,7 +81,6 @@
     justify-content: left;
 
   }
-
   .portrait{
     width: 67px;
     height: 67px;
@@ -100,6 +99,7 @@
     margin-top: 0;
   }
   .phone{
+    margin-top: 11px;
     font-size: 13px;
     color: #ffffff;
     width: 84px;
@@ -109,10 +109,9 @@
   }
 
   .info-cell{
-
+    padding: 21px 0;
     display: flex;
     align-items: center;
-    margin: 0;
     border-bottom: 1px solid  #aaaaaa59;
   }
   .my-icon{

@@ -1,14 +1,18 @@
 <template>
   <div class="home">
-      <div class="top-cell" onload="init()">
-        <canvas id="demoCanvas" width="50px" height="50px"></canvas>
-<!--        <div style="z-index: -1;">-->
-<!--          <div class="detail">积分明细</div>-->
-<!--          <div class="circle">-->
-<!--            {{score}}-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <p class="tip">减碳行动有些携懈怠了哦</p>-->
+    <div class="detail">积分明细</div>
+    <div onload="init()" class="canvas">
+
+    <canvas id="demoCanvas" width="375" height="200px" ></canvas>
+    </div>
+      <div class="top-cell">
+        <div>
+
+          <div class="circle">
+            {{score}}
+          </div>
+        </div>
+        <p class="tip">减碳行动有些携懈怠了哦</p>
 
 <!--        <easel-canvas width="400" height="300">-->
 <!--          <easel-shape-->
@@ -40,11 +44,11 @@
         </div>
         <div v-for="item in rankList" :key="item.id" class="rank-cell">
           <div class="user-info">
-            <p class="user-id">{{item.id}}</p>
+            <p class="user-id">{{item.User_rank}}</p>
             <img :src="item.img" class="user-img">
             <p class="user">{{item.username}}</p>
           </div>
-          <div class="user" style="margin-right: 24px">{{item.score}}</div>
+          <div class="user" style="margin-right: 24px">{{item.Value_count}}</div>
         </div>
         </div>
       </div>
@@ -54,36 +58,47 @@
 </template>
 
 <script>
+import { getValue } from '../api/user'
 import TabBar from '../components/TabBar'
 function init() {
   //遮罩
-  // var stage = new createjs.Stage("box");
-  // var image=new Image();
-  // image.src="../../images/cat.jpg";
-  // image.onload=handleImageLoad;
-  // function handleImageLoad(e){
-  //   var b=new createjs.Bitmap(e.target);
-  //   stage.addChild(b);
-  //   var Mask=new createjs.Shape();
-  //   Mask.graphics.beginFill("red");
-  //   Mask.graphics.drawCircle(0,0,60);
-  //   Mask.x=100;
-  //   Mask.y=100;
-  //   b.mask=Mask;
-  //   stage.update();
-  // }
-
   // 这里写代码
+  // var stage = new createjs.Stage("demoCanvas");
+  // var circle = new createjs.Shape();
+  // circle.graphics.beginFill("DeepSkyBlue").drawCircle(0, 0, 50);
+  // circle.x = 100;
+  // circle.y = 100;
+  // stage.addChild(circle);
+  // stage.update();
+
   var stage = new createjs.Stage("demoCanvas");
-  var circle = new createjs.Shape();
-  circle.graphics.beginFill("DeepSkyBlue").drawCircle(0, 0, 50);
-  circle.x = 100;
-  circle.y = 100;
-  stage.addChild(circle);
-  stage.update();
+  var image=new Image();
+  image.src="../../images/cat.jpg";
+  image.onload=handleImageLoad;
+  function handleImageLoad(e) {
+    var b = new createjs.Bitmap(e.target);
+    stage.addChild(b);
+    var Mask = new createjs.Shape();
+    Mask.graphics.beginFill("red");
+    Mask.graphics.drawRect(21, 23);
+    Mask.x = 100;
+    Mask.y = 100;
+    b.mask = Mask;
+    stage.update();
+  }
 
 }
-
+function handleImageLoad(e) {
+  var b = new createjs.Bitmap(e.target);
+  stage.addChild(b);
+  var Mask = new createjs.Shape();
+  Mask.graphics.beginFill("red");
+  Mask.graphics.drawRect(21, 23);
+  Mask.x = 100;
+  Mask.y = 100;
+  b.mask = Mask;
+  stage.update();
+}
 // @ is an alias to /src
 export default {
   name: 'Home',
@@ -93,21 +108,48 @@ export default {
   mounted(){
     init()
   },
+  created(){
+    getValue().then((res) =>{
+      console.log("222")
+      console.log(res)
+      this.rankList = res;
+    })
+    var stage = new createjs.Stage("demoCanvas");
+    var image=new Image();
+    image.src="../../images/cat.jpg";
+    image.onload=handleImageLoad;
+    function handleImageLoad(e) {
+      var b = new createjs.Bitmap(e.target);
+      stage.addChild(b);
+      var Mask = new createjs.Shape();
+      Mask.graphics.beginFill("red");
+      Mask.graphics.drawRect(21, 23);
+      Mask.x = 100;
+      Mask.y = 100;
+      b.mask = Mask;
+      stage.update();
+    }
+
+  },
   data() {
     return {
       score: 88,
       rankList: [
-        {id: 0, username: 'hmm', score: 355, img: require('../../images/cat.jpg')},
-        {id: 1, username: 'hmm', score: 355, img: require('../../images/cat.jpg')},
-        {id: 2, username: 'hmm', score: 355, img: require('../../images/cat.jpg')},
-        {id: 3, username: 'hmm', score: 355, img: require('../../images/cat.jpg')},
-        {id: 4, username: 'hmm', score: 355, img: require('../../images/cat.jpg')},
+        // {id: 0, username: 'hmm', score: 355, img: require('../../images/cat.jpg')},
+        // {id: 1, username: 'hmm', score: 355, img: require('../../images/cat.jpg')},
+        // {id: 2, username: 'hmm', score: 355, img: require('../../images/cat.jpg')},
+        // {id: 3, username: 'hmm', score: 355, img: require('../../images/cat.jpg')},
+        // {id: 4, username: 'hmm', score: 355, img: require('../../images/cat.jpg')},
       ]
     }
   }
 }
 </script>
 <style>
+  .home{position: relative}
+  .canvas{
+    height: 200px;
+  }
   #demoCanvas{
     z-index: 1;
 
@@ -117,7 +159,7 @@ export default {
     font-size: 13px;
     color: #87c67d;
     text-align: center;
-    line-height: 500px;
+    line-height: 170px;
   }
   .detail{
     position:absolute;
@@ -141,7 +183,7 @@ export default {
     z-index: 1;
     top: 50%;
     left: 50%;
-    transform: translate(100%, 150%);
+    transform: translate(100%, 50%);
     font-size: 46px;
     font-weight: bold;
     color: #04bd04;
@@ -170,9 +212,8 @@ export default {
     bottom: 0;
   }
   .top-cell{
-    height: 440px;
+    height: 240px;
     width: 100%;
-    background-color: ivory;
     position: relative;
   }
   .second-cell{
