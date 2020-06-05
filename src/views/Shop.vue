@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="shop-nav">
-      <p class="back">返回</p>
+      <p class="back" @click="goBack">返回</p>
       <img src="../../images/购物车.png" class="shop-icon">
     </div>
     <div class="shop-header">
@@ -116,6 +116,11 @@ import { getGoods,getGoodsByType } from '@/api/goods';
               shopList3:[]
             }
         },
+      methods:{
+          goBack(){
+            this.$router.go(-1);
+          }
+      }
     }
 </script>
 

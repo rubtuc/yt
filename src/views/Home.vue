@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="detail">积分明细</div>
+    <div class="detail" @click="goToCarbon" >积分明细</div>
     <div onload="init()" class="canvas">
 
     <canvas id="demoCanvas" width="375" height="200px" ></canvas>
@@ -31,8 +31,8 @@
         <div class="second-cell">
           <p class="title">积分权限</p>
           <div class="second-content">
-            <img src="../../images/cat.jpg" class="entry">
-            <img src="../../images/cat.jpg" class="entry">
+            <img src="../../images/兑换.jpg" class="entry" @click="goToShop">
+            <img src="../../images/游戏.jpg" class="entry">
           </div>
         </div>
       </div>
@@ -42,13 +42,13 @@
           <p class="title">我的碳形象</p>
           <van-button plain hairline type="primary" size="small">地区排名</van-button>
         </div>
-        <div v-for="item in rankList" :key="item.id" class="rank-cell">
+        <div v-for="item in rankList" :key="item.user_id" class="rank-cell">
           <div class="user-info">
-            <p class="user-id">{{item.User_rank}}</p>
-            <img :src="item.img" class="user-img">
-            <p class="user">{{item.username}}</p>
+            <p class="user-id">{{item.user_rank}}</p>
+            <img :src="item.user_image_path" class="user-img">
+            <p class="user">{{item.user_name}}</p>
           </div>
-          <div class="user" style="margin-right: 24px">{{item.Value_count}}</div>
+          <div class="user" style="margin-right: 24px">{{item.value_count}}</div>
         </div>
         </div>
       </div>
@@ -58,7 +58,7 @@
 </template>
 
 <script>
-import { getValue } from '../api/user'
+  import { getValue } from '../api/user'
 import TabBar from '../components/TabBar'
 function init() {
   //遮罩
@@ -106,18 +106,44 @@ export default {
     TabBar
   },
   mounted(){
-    init()
+    init();
   },
-  created(){
-    getValue().then((res) =>{
-      console.log("222")
-      console.log(res)
-      this.rankList = res;
-    })
+  created() {
+    getValue()
+      .then((res) => {
+        console.log(("222"))
+        res.forEach((item) => {
+          console.log(item.user_name)
+          this.rankList.push({
+            user_id: item.user_id,
+            value_count: item.value_count,
+            user_rank: item.user_rank,
+            user_name: item.user_name,
+            user_image_path: require('../../images/' + item.user_image_path),
+          });
+        })
+      })
+
+
+    // for (let i = 0; i < this.rankList.length; i++) {
+    //   getUserById(this.rankList[i].user_id).then((res) => {
+    //     var rank = JSON.parse(JSON.stringify([res][0]));
+    //     console.log("777",rank.user_name)
+    //     console.log("555",JSON.parse(JSON.stringify([res][0])))
+    //         res.forEach((item) => {
+    //           //this.rankList[i].user_image_path=require('../../images/' + item.user_image_path),
+    //           this.rankList[i].user_name = item.user_name;
+    //           console.log("999",this.rankList[i])
+    //         });
+    //       })
+    //     }
+    //   console.log("666",this.rankList)
+    //   });
     var stage = new createjs.Stage("demoCanvas");
-    var image=new Image();
-    image.src="../../images/cat.jpg";
-    image.onload=handleImageLoad;
+    var image = new Image();
+    image.src = "../../images/cat.jpg";
+    image.onload = handleImageLoad;
+
     function handleImageLoad(e) {
       var b = new createjs.Bitmap(e.target);
       stage.addChild(b);
@@ -129,18 +155,19 @@ export default {
       b.mask = Mask;
       stage.update();
     }
-
   },
   data() {
     return {
       score: 88,
-      rankList: [
-        // {id: 0, username: 'hmm', score: 355, img: require('../../images/cat.jpg')},
-        // {id: 1, username: 'hmm', score: 355, img: require('../../images/cat.jpg')},
-        // {id: 2, username: 'hmm', score: 355, img: require('../../images/cat.jpg')},
-        // {id: 3, username: 'hmm', score: 355, img: require('../../images/cat.jpg')},
-        // {id: 4, username: 'hmm', score: 355, img: require('../../images/cat.jpg')},
-      ]
+      rankList:[]
+    }
+  },
+  methods:{
+    goToShop(){
+      this.$router.push('/shop');
+    },
+    goToCarbon(){
+      this.$router.push('/carbon');
     }
   }
 }
@@ -152,7 +179,6 @@ export default {
   }
   #demoCanvas{
     z-index: 1;
-
   }
   .tip{
     bottom: 12px;
@@ -205,7 +231,6 @@ export default {
     background-color: #ffffff;
     box-shadow: inset 0px -1px 1px 0px
     rgba(36, 19, 16, 0.14);
-
     display: flex;
     justify-content: space-around;
     position: fixed;

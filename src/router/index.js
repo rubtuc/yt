@@ -41,6 +41,11 @@ Vue.use(VueRouter)
       component: () => import(/* webpackChunkName: "about" */ '../views/Pay.vue')
     },
     {
+      path: '/carbon',
+      name: 'CarbonRecord',
+      component: () => import(/* webpackChunkName: "about" */ '../views/CarbonRecord.vue')
+    },
+    {
       path: '/map',
       name: 'Map',
       component: () => import(/* webpackChunkName: "about" */ '../views/Map/Map.vue')
@@ -56,7 +61,7 @@ Vue.use(VueRouter)
       component: () => import(/* webpackChunkName: "about" */ '../views/Map/MapThird.vue')
     },
     {
-      path: '/station',
+      path: '/map/station',
       name: 'Station',
       component: () => import(/* webpackChunkName: "about" */ '../views/Map/Station.vue')
     },

@@ -24,11 +24,11 @@
           </div>
           <div class="btn-seek flex-row">
             <div @click="goToStation">
-              <img src="../../../images/线路.png" class="seek-icon">
+              <img src="../../../images/车站.png" class="seek-icon">
               <p class="seek-text">站点查询</p>
             </div>
             <div @click="goToRecord">
-              <img src="../../../images/cat.jpg" class="seek-icon">
+              <img src="../../../images/线路.png" class="seek-icon">
               <p class="seek-text">行程记录</p>
             </div>
           </div>
