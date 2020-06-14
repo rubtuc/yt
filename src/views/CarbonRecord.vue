@@ -2,7 +2,7 @@
 <div style="background-color: #f6f6f6;height: 100vh">
   <div class="shop-nav">
     <p class="back" @click="goBack">返回</p>
-    <p class="nav-center">积分明细</p>
+    <p class="nav-center" @click="goBack">积分明细</p>
   </div>
   <div v-for="item in CarbonList" :key="item.id" class="carbon-cell">
     <div class="carbon-content">
@@ -40,7 +40,7 @@
       },
       methods:{
         goBack(){
-          this.$router.go(-1);
+          this.$router.push('/');
         }
       }
     }

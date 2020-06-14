@@ -1,8 +1,8 @@
 <template>
     <div style="background-color: #fefefe">
       <div class="nav-help">
-        <span class="back">返回</span>
-        <span>消息</span>
+        <span class="back" @click="goBack">返回</span>
+        <span style="font-weight: bold">消息</span>
       </div>
       <div v-for="item in noticeList" :key="item.id">
         <p>{{item.time}}</p>
@@ -24,7 +24,13 @@
               {id:2,message:"这里是一条信息",time:"14:56"},
             ]
           }
+      },
+      methods:{
+          goBack(){
+            this.$router.push("/person")
+          }
       }
+
     }
 </script>
 

@@ -56,7 +56,7 @@ import { Trip } from '../api/trip'
       },
       methods:{
         backToMap(){
-          this.$router.push('/map')
+          this.$router.go(-1)
         },
         goBack(){
           this.$router.go(-1);

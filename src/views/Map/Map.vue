@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="shop-nav">
-      <p class="nav-side" style="text-align: left">返回</p>
+      <p class="nav-side" style="text-align: left"></p>
       <p class="nav-center">易碳</p>
-      <p class="nav-side" style="text-align: right;margin-right: 13px">签到</p>
+      <p class="nav-side" style="text-align: right;margin-right: 13px"></p>
     </div>
     <div></div>
     <div class="map" id="container">
@@ -12,13 +12,13 @@
           <div class="search-route">
             <div class="flex-row" >
               <div class="start-point"></div>
-              <input class="input" placeholder="我的位置" id="tipinput" style="border-bottom: 1px solid #95959545">
+              <input class="input" placeholder="我的位置" id="tipinput" style="border-bottom: 1px solid #95959545" v-model="from">
             </div>
             <div class="flex-row">
               <div class="end-point"></div>
-              <input class="input" placeholder="目的地" id="tipinput1" style="border-bottom: 1px solid #95959545;position: relative">
+              <input class="input" placeholder="目的地" id="tipinput1" style="border-bottom: 1px solid #95959545;position: relative" v-model="to">
               <van-button type="primary" class="search" size="small" @click="goToSecond">搜索</van-button>
-              <img src="../../../images/交换.png" class="reverse-icon">
+              <img src="../../../images/交换.png" class="reverse-icon" @click="reverse">
 
             </div>
           </div>
@@ -103,12 +103,26 @@ import TabBar from '../../components/TabBar'
       },
       data(){
           return{
-
+            from:"黄浦江",
+            to:"黑龙江"
           }
       },
       methods:{
+        reverse(){
+          console.log(this.from)
+          var f=this.from;
+          var t=this.to;
+          this.from=t
+          this.to=f;
+        },
         goToSecond(){
-          this.$router.push('/map/second')
+          console.log("map",this.from)
+          this.$router.push({
+            name:'MapSecond',
+            params: {
+              from: this.from,
+              to:this.to
+            }});
         },
         goToRecord(){
           this.$router.push('/record')
@@ -257,6 +271,7 @@ p{
   color: #626363;
 }
 .shop-nav{
+
   height: 33px;
   display: flex;
   justify-content: space-between;

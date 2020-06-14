@@ -1,7 +1,7 @@
 <template>
     <div style="text-align: left">
       <div class="shop-nav">
-        <p class="back">返回</p>
+        <p class="back" @click="goBack">返回</p>
         <p class="nav-help">帮助</p>
       </div>
       <form action="/">
@@ -9,6 +9,7 @@
           v-model="value"
           show-action
           placeholder="请输入搜索关键词"
+          background="#b3afaf9E"
           @search="onSearch"
           @cancel="onCancel"
         />
@@ -46,11 +47,22 @@
         onCancel() {
           Toast('取消');
         },
+        goBack(){
+          this.$router.go(-1);
+        }
       }
     }
 </script>
 
-<style scoped>
+<style scoped lang="less">
+  .van-search__action{
+    font-size: 13px;
+    color: #1b72e1;
+  }
+  .my-info{
+    font-size: 13px;
+    color: #000000;
+  }
   .search-cell{
     height: auto;padding-top: 0;padding-bottom: 0;position: relative;
   }
@@ -77,6 +89,7 @@
     margin: 16px 0 16px 30px;
     text-align: left;
     color: #000000;
+    font-weight: bold;
   }
   .back{
     font-size: 12px;
@@ -91,9 +104,14 @@
   }
   .nav-help{
     flex: 1.3;
+    font-weight: bold;
     font-size: 13px;
     color: #000000;
     margin: 0;
     text-align: left;
   }
+  p{
+    margin: 12px 0 12px 0;
+  }
+
 </style>

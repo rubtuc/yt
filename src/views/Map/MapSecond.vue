@@ -6,14 +6,14 @@
           <div>
             <div class="flex-row" >
               <div class="start-point"></div>
-              <input class="input" placeholder="我的位置" id="tipinput" style="border-bottom: 2px solid #95959545">
+              <input class="input" placeholder="我的位置" id="tipinput" style="border-bottom: 2px solid #95959545" v-model="from">
             </div>
             <div class="flex-row">
               <div class="end-point"></div>
-              <input class="input" placeholder="目的地" id="tipinput1" style="position: relative">
+              <input class="input" placeholder="目的地" id="tipinput1" style="position: relative" v-model="to">
             </div>
           </div>
-          <img src="../../../images/交换.png" class="reverse-icon">
+          <img src="../../../images/交换.png" class="reverse-icon" @click="reverse">
         </div>
 
       </div>
@@ -36,10 +36,12 @@
     export default {
       name: "MapSecond",
       created(){
-        const Buttons = this.$refs.recordNavButton.getElementsByTagName('button');
+        this.getParams()
       },
       data() {
         return {
+          from:"",
+          to:"",
           recomendList: [{
             id: 0,
             from: "1",
@@ -67,9 +69,26 @@
         }
       },
       methods:{
+        getParams(){
+          console.log("15",this.$route.params.from)
+          console.log("16",this.$route.params.to)
+          this.from=this.$route.params.from;
+          this.to=this.$route.params.to;
+          console.log("12",this.$route.params.from)
+          const Buttons = this.$refs.recordNavButton.getElementsByTagName('button');
+          // let that=this;
+
+        },
         backToMap(){
           this.$router.push('/map')
-        }
+        },
+        reverse(){
+          console.log(this.from)
+          var f=this.from;
+          var t=this.to;
+          this.from=t
+          this.to=f;
+        },
       }
     }
 </script>
@@ -113,7 +132,7 @@
     flex: 1;
     background-color: #ebe7e7;
     border-radius: 10px;
-    opacity: 0.43;
+    opacity: 0.73;
     display: flex;
     padding: 0 22px 0 12px;
     justify-content: center;

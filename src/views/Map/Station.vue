@@ -6,7 +6,7 @@
       <van-search
         v-model="value"
         show-action
-        placeholder="请输入搜索关键词"
+        placeholder="搜索站点或线路"
         shape="round"
         @search="onSearch"
         @cancel="onCancel"
@@ -34,14 +34,13 @@
           value: '',
           items: [
             {
-              text: '浙江',
+              text: '1号线',
               children: [
                 {
-                  // 名称
                   text: '温州',
-                  // id，作为匹配选中状态的标识符
                   id: 0,
-                }],
+                },
+              ],
             }],
           activeId: 1,
           activeIndex: 0,
