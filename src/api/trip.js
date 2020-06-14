@@ -6,6 +6,13 @@ export function Trip(userId, mineType, mineAmount, vntAmount, vntErc20Amount) {
     method: 'get',
   });
 }
+
+export  function getStation() {
+  return axios({
+    url:'/station',
+    method: 'get'
+  })
+}
 //
 // export function Trip(userId, mineType, mineAmount, vntAmount, vntErc20Amount) {
 //   return axios({

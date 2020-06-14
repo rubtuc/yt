@@ -16,6 +16,7 @@
   <van-tree-select
     :items="items"
     :active-id.sync="activeId"
+    height="100%"
     :main-active-index.sync="activeIndex"
   >
     <template>
@@ -26,8 +27,9 @@
 </template>
 
 <script>
+import {getStation} from "../../api/trip";
 
-    export default {
+export default {
         name: "Station",
       data() {
         return {
@@ -40,11 +42,83 @@
                   text: '温州',
                   id: 0,
                 },
+                {
+                  text: '温州',
+                  id: 0,
+                },
+                {
+                  text: '温州',
+                  id: 0,
+                },
+
+                {
+                  text: '温州',
+                  id: 0,
+                },
+                {
+                  text: '温州',
+                  id: 0,
+                },
+                {
+                  text: '温州',
+                  id: 0,
+                },
+                {
+                  text: '温州',
+                  id: 0,
+                },
+                {
+                  text: '温州',
+                  id: 0,
+                },
+                {
+                  text: '温州',
+                  id: 0,
+                },
+                {
+                  text: '温州',
+                  id: 0,
+                },
+                {
+                  text: '温州',
+                  id: 0,
+                },
+                {
+                  text: '温州',
+                  id: 0,
+                },
+
               ],
+            },
+            {
+              text: '2号线',
+              children:[{
+                id: 0,
+                text: ""
+              }]
             }],
           activeId: 1,
           activeIndex: 0,
         };
+      },
+      created(){
+        getStation().then((res)=>{
+          var id=0;
+          console.log(res.length)
+          this.items[0].children.length=res.length
+          for(let i=0;i<res.length;i++){
+
+            console.log(res[0].line_name);
+
+              this.items[0].children[i].text=res[i].station_name;
+              this.items[0].children[i].id=id++;
+
+          }
+          console.log("00",this.items)
+
+        })
+
+
       },
       methods: {
         onSearch(val) {
@@ -60,7 +134,10 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="less">
+  .van-tree-select{
+    height: auto;
+  }
   .nav-center{
     flex: 1;
     font-size: 17px;

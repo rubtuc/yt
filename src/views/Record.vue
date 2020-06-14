@@ -6,7 +6,7 @@
 <!--    </div>-->
     <div class="shop-nav">
       <p class="back" @click="backToMap">返回</p>
-      <p class="nav-center">行程记录</p>
+      <p class="nav-center" @click="backToMap">行程记录</p>
     </div>
   <div v-for="item in HistoryList" :key="item.trip_no" style="background-color: white">
     <div style="display: flex;justify-content: flex-start;margin-left: 4%" >
@@ -56,7 +56,7 @@ import { Trip } from '../api/trip'
       },
       methods:{
         backToMap(){
-          this.$router.go(-1)
+          this.$router.push('/map')
         },
         goBack(){
           this.$router.go(-1);

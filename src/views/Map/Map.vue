@@ -103,8 +103,8 @@ import TabBar from '../../components/TabBar'
       },
       data(){
           return{
-            from:"黄浦江",
-            to:"黑龙江"
+            from:"",
+            to:""
           }
       },
       methods:{

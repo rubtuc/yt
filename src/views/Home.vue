@@ -12,7 +12,7 @@
       <div class="top-cell">
         <div>
 
-          <div class="circle" id="m_ball" @click="in_ball">{{score}}
+          <div class="circle" id="m_ball" @click="in_ball">{{value_count}}
           </div>
         </div>
         <p class="tip">减碳行动有些携懈怠了哦</p>
@@ -56,7 +56,7 @@
 </template>
 
 <script>
-  import { getValue } from '../api/user'
+  import { getValue,getValueById } from '../api/user'
 import TabBar from '../components/TabBar'
 // function init() {
 //
@@ -72,6 +72,10 @@ export default {
   },
   created() {
     this.getNumber();
+    getValueById(10005)
+      .then((res) => {
+        this.value_count=res[0].value_count;
+      })
     getValue()
       .then((res) => {
         console.log(("222"))
@@ -161,16 +165,13 @@ export default {
       for(var i=0;i<this.ballList.length;i++) {
         //this.score =99;
         if(this.finish == false){
-          this.score +=this.ballList[i].each;
+          this.value_count +=this.ballList[i].each;
         }
 
       }
       this.finish=true;
       let that =this;
       setTimeout(function(){ that.visible=false; }, 2000);
-      self.score =99;
-      console.log("111")
-      console.log(this.score)
     },
 
   }
