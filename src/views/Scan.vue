@@ -2,10 +2,11 @@
 <div style="background-image: linear-gradient(#ffffff, #87c67d);height: 100vh;text-align: center; ">
   <img class="scan-banner" src="../../images/20170602170035_1250.jpg">
   <div class="scan-code">
-    <img src="../../images/二维码出行.png" class="code-img" >
-    <div style="display: flex;align-items: center;justify-content: center">
+    <div id="qrcode" class="code-img"  ref="qrcode"></div>
+<!--    <img src="../../images/二维码出行.png" class="code-img" >-->
+    <div style="display: flex;align-items: center;justify-content: center;margin-top: 55px">
       <img src="../../images/刷新.png" class="refresh-icon">
-      <p>刷新</p>
+      <p @click="change">刷新</p>
     </div>
   </div>
   <TabBar></TabBar>
@@ -14,11 +15,33 @@
 
 <script>
 import TabBar from '../components/TabBar'
+import QRCode from 'qrcodejs2'
     export default {
         name: "Scan",
         components:{
           TabBar
+        },
+      data() {
+        return{
+          qrcode:""
         }
+      },
+      created(){
+
+      },
+
+      methods:{
+        change(){
+            this.qrcode.clear()
+            this.qrcode.makeCode("https://baidu.com");
+        }
+      },
+      mounted(){
+        var qrcode = new QRCode("qrcode");
+        this.qrcode=qrcode
+        qrcode.makeCode("https://www.runoob.com/w3cnote/javascript-qrcodejs-library.html");
+
+      },
     }
 </script>
 
@@ -35,6 +58,7 @@ import TabBar from '../components/TabBar'
 .code-img{
   width: 216px;
   height: 216px;
+
   margin: 45px 0 42px 0;
 }
   .scan-code{
@@ -46,5 +70,6 @@ import TabBar from '../components/TabBar'
     background-color: #ffffff;
     border-radius: 3px;
     text-align: center;
+    padding-left: 30px;
   }
 </style>

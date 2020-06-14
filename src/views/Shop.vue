@@ -6,7 +6,7 @@
     </div>
     <div class="shop-header">
       <p class="shop-header-text1">我的碳积分</p>
-      <p class="shop-header-text2">{{score}}</p>
+      <p class="shop-header-text2">{{value_count}}</p>
     </div>
       <van-tabs v-model="active" title-active-color="#87c67d" title-inactive-color="#aaaaaa" color="#87c67d">
         <img src="../../images/timg.jpg" class="shop-banner">
@@ -55,10 +55,15 @@
 </template>
 
 <script>
-import { getGoods,getGoodsByType } from '@/api/goods';
+  import {getValueById} from "../api/user";
+  import { getGoods,getGoodsByType } from '@/api/goods';
     export default {
         name: "Shop",
         created(){
+          getValueById(10005)
+            .then((res) => {
+              this.value_count=res[0].value_count;
+            })
             getGoods()
               .then((res) => {
                 console.log("111")
@@ -109,7 +114,7 @@ import { getGoods,getGoodsByType } from '@/api/goods';
         data(){
             return{
               active:2,
-              score:111,
+              value_count:111,
               shopList:[],
               shopList1:[],
               shopList2:[],
